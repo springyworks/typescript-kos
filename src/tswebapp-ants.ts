@@ -3,7 +3,10 @@ function drawDotsWithLetters() {
   const canvas = document.createElement("canvas");
   canvas.id = "dotsCanvas";
   document.body.appendChild(canvas);
-
+  const head = document.head || document.getElementsByTagName('head')[0];
+  const title = document.createElement('title');
+  title.textContent = "TypeScript Ants kos";
+  head.appendChild(title);
   const ctx = canvas.getContext("2d");
   if (ctx) {
     const letters = "ABCDEFGHIJ".split("");

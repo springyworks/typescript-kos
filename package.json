@@ -2,7 +2,7 @@
     "name": "vscode-typescript-web-app",
     "version": "0.0.5",
     "description": "A sample TypeScript project, usable as template",
-    "main": "out/tswebapp-ants.js",
+    "main": "out/main.js",
    
     "author": "springyworks",
     "license": "MIT",

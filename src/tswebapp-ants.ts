@@ -5,8 +5,7 @@ function drawDotsWithLetters() {
   const canvas = document.createElement("canvas");
   canvas.id = "dotsCanvas";
   document.body.appendChild(canvas);
-  // Set the title of the document
-  //document.title = "Dots with Letters";
+  
   const ctx = canvas.getContext("2d");
   if (ctx) {
     const letters = "ABCDEFGHIJ".split("");
@@ -75,17 +74,18 @@ function drawDotsWithLetters() {
       ctx.font = "14px Arial";
       ctx.textAlign = "left";
       ctx.textBaseline = "top";
-      ctx.fillText(`Last Modified: ${lastModified}`, 10, 10);
+      ctx.fillText(`Last Modified: ${lastModified}`, 40, 10);
 
-      requestAnimationFrame(draw);
+      // Print a new line saying "click in de pagina for fun!"
+      ctx.fillText("click in de pagina for fun!", 100, 30); 
+       requestAnimationFrame(draw);
     };
 
     // Get the last modification time of the current script
     const scriptElement = document.currentScript as HTMLScriptElement;
     const lastModified = new Date(document.lastModified).toLocaleString();
 
-    // Temporarily print the last modification time to the console for testing purposes
-    console.log(`Last Modified: ${lastModified}`);
+    
 
     // Initial setup
     resizeCanvas();

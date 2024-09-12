@@ -2,8 +2,12 @@
 var canvas = document.createElement('canvas');
 document.body.appendChild(canvas);
 var ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas() {
+    canvas.width = window.innerWidth - 20; // Adjust width to avoid horizontal scrollbar
+    canvas.height = window.innerHeight - 20; // Adjust height to avoid vertical scrollbar
+}
+//resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 var size = 50;
 var speed = 2;
 var square1 = {

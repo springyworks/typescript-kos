@@ -4,7 +4,8 @@
     "module": "commonjs",
     "outDir": "./out",
     "rootDir": "./",
-    "strict": true
+    "strict": true,
+ 
   },
   "include": ["src/**/*", "main.ts"]
 }

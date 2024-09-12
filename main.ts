@@ -1,67 +1,69 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const body = document.body;
+const canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+const ctx = canvas.getContext('2d');
 
-  // Create and append canvas element
-  const canvas = document.createElement("canvas");
-  body.appendChild(canvas);
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-  const context = canvas.getContext("2d");
+const size = 50;
+const speed = 2;
 
-  const drawCircle = () => {
-    if (context) {
-      // Clear the canvas
-      context.clearRect(0, 0, canvas.width, canvas.height);
+let square1 = {
+  x: canvas.width / 4,
+  y: canvas.height / 4,
+  dx: speed,
+  dy: speed,
+  color: 'blue'
+};
 
-      // Get the smaller dimension to make the circle fit within the window
-      const size = Math.min(window.innerWidth, window.innerHeight);
+let square2 = {
+  x: (canvas.width / 4) * 3,
+  y: (canvas.height / 4) * 3,
+  dx: -speed,
+  dy: -speed,
+  color: 'red'
+};
 
-      // Set canvas size
-      canvas.width = size;
-      canvas.height = size;
+function detectCollision(square1: any, square2: any) {
+  return (
+    square1.x < square2.x + size &&
+    square1.x + size > square2.x &&
+    square1.y < square2.y + size &&
+    square1.y + size > square2.y
+  );
+}
 
-      // Draw the circle
-      context.beginPath();
-      context.arc(size / 2, size / 2, size / 2 - 10, 0, Math.PI * 2);
-      context.fillStyle = "black";
-      context.fill();
-      context.stroke();
+function animate() {
+  if (ctx) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  [square1, square2].forEach(square => {
+    if (ctx) {
+      ctx.fillStyle = square.color;
+      ctx.fillRect(square.x, square.y, size, size);
     }
-  };
 
-  const animateText = (finalSize: number, duration: number) => {
-    const startTime = performance.now();
-    const initialSize = 5; // Starting font size
+    if (square.x + size > canvas.width || square.x < 0) {
+      square.dx = -square.dx;
+    }
 
-    const animate = (currentTime: number) => {
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
-      const currentSize = initialSize + (finalSize - initialSize) * progress;
+    if (square.y + size > canvas.height || square.y < 0) {
+      square.dy = -square.dy;
+    }
 
-      // Clear the canvas and redraw the circle
-      drawCircle();
-
-      // Draw the text with the current size
-      if (context) {
-        context.font = `${currentSize}px Arial`;
-        context.fillStyle = "black";
-        context.fillText("A circle 248", 10, 30);
-      }
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  };
-
-  // Initial draw
-  drawCircle();
-  animateText(20, 1000); // Animate to 20px font size over 1 second
-
-  // Redraw on window resize
-  window.addEventListener("resize", () => {
-    drawCircle();
-    animateText(20, 1000); // Re-animate text on resize
+    square.x += square.dx;
+    square.y += square.dy;
   });
-});
+
+  if (detectCollision(square1, square2)) {
+    square1.dx = -square1.dx;
+    square1.dy = -square1.dy;
+    square2.dx = -square2.dx;
+    square2.dy = -square2.dy;
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();

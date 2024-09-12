@@ -2,8 +2,13 @@ const canvas = document.createElement('canvas');
 document.body.appendChild(canvas);
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas() {
+  canvas.width = window.innerWidth - 20; // Adjust width to avoid horizontal scrollbar
+  canvas.height = window.innerHeight - 20; // Adjust height to avoid vertical scrollbar
+}
+
+//resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
 const size = 50;
 const speed = 2;

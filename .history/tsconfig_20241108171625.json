@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "./out",
+    "rootDir": "./",
+    "strict": true,
+    "lib": ["es2015"],
+    "types": ["vite/client"]
+ 
+  },
+  "include": ["src/**/*", "main.ts"]
+}

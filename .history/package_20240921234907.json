@@ -1,0 +1,12 @@
+{
+    "name": "maxgraph-typescript-vscode-web",
+    "version": "0.0.5",
+    "description": "A maxGraph TypeScript project, tailered for vscode",
+    "main": "out/main.js",
+   
+    "author": "springyworks",
+    "license": "MIT",
+    "devDependencies": {
+      "typescript": "^5.0.0"
+    }
+  }

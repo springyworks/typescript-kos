@@ -1,1 +1,1 @@
-TODO
+ experimenting project for maxGraph and typescript, using vscode acoording to vscode tutorial (micrososft)

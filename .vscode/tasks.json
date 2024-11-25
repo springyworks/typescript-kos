@@ -4,6 +4,7 @@
 		{
 			"type": "typescript",
 			"tsconfig": "tsconfig.json",
+			 "option": "--listFiles",
 			"problemMatcher": [
 				"$tsc"
 			],
@@ -16,7 +17,7 @@
 		{
 			"type": "typescript",
 			"tsconfig": "tsconfig.json",
-			"option": "watch",
+			"option": "--listFiles --watch",
 			"problemMatcher": [
 				"$tsc-watch"
 			],

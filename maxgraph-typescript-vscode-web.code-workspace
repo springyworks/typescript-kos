@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true
+		},
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#5E0625",
+			"titleBar.activeBackground": "#840834",
+			"titleBar.activeForeground": "#FFFBFD"
+		}
+	}
+}
